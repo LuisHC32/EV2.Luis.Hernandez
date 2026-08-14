@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id        Int        @id @default(autoincrement())
+  nombre    String     @db.VarChar(120)
+  correo    String     @unique @db.VarChar(255)
+  clave     String     @db.VarChar(255)
+  proyectos Proyecto[]
+
+  @@map("usuarios")
+}
+
+model Proyecto {
+  id           Int      @id @default(autoincrement())
+  nombre       String   @db.VarChar(180)
+  fecha_inicio DateTime @db.Date
+  estado       String   @db.VarChar(50)
+  responsable  String   @db.VarChar(120)
+  monto        Decimal  @db.Decimal(12, 2)
+  created_by   Int
+  creador      Usuario  @relation(fields: [created_by], references: [id], onDelete: Restrict)
+
+  @@index([created_by])
+  @@map("proyectos")
+}
