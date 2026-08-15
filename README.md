@@ -5,7 +5,7 @@ Aplicación Next.js (TypeScript + Tailwind) con API Route Handlers, Prisma/MySQL
 ## Requisitos
 
 - Docker Desktop
-- Puertos libres: `3000` (app) y `3307` (MySQL en el host; dentro de la red Docker sigue siendo `3306`)
+- Puertos libres: `3000` (app) y `3306` 
 
 ## Variables de entorno
 
@@ -13,11 +13,11 @@ Copia `.env.example` a `.env`. Valores del brief:
 
 | Variable | Valor |
 |---|---|
-| `DB_NAME` | `desarrollo_software_1` |
+| `DB_NAME` | `db_name` |
 | `DB_USER` | `root` |
-| `DB_PASSWORD` | `desarrollo_software_1` |
+| `DB_PASSWORD` | `db_pass` |
 
-Dentro de Docker, `DATABASE_URL` usa el host `mysql`. Desde Windows (cliente externo) usa `127.0.0.1:3307`.
+Dentro de Docker, `DATABASE_URL` usa el host `mysql`. Desde Windows (cliente externo) usa `127.0.0.1:3306`.
 
 ## Arranque
 
@@ -26,7 +26,7 @@ docker compose up --build
 ```
 
 - App: http://localhost:3000
-- MySQL en el host: `127.0.0.1:3307`
+- MySQL en el host: `127.0.0.1:3306`
 
 ## Endpoints
 
