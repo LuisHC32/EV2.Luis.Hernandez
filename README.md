@@ -45,3 +45,13 @@ docker compose up --build
 
 -Elegi este stack para actualizarme, vengo de utilizar php/laravel, js, css-html, aunque los ultimos meses estoy con tailwind, pero necesitaba actualizarme y buscar soluciones a problematicas que me encontraba al utilizar ese stack, problemas como el pagar un costo extra al utilizar cpanel o plesk (Esto en el servidor) ya que con docker anda muy lento php.
 Tambien para el entorno laboral, encuentro que este stack se esta utilizando mas y hay mas mercado laboral, aunque php no muere del todo, pero los proyectos nuevos no se esta utilizando y lo que queda actualmente, son "proyectos/codigo legacy".
+
+## Test registro usuario
+Registro de usuario y claves hasheadas con Argon2id en MySQL
+![Registro de usuario y claves hasheadas con Argon2id en MySQL](image.png)
+
+##  Test iniciar sesion y mostrar JWT
+Iniciar sesion y se verifica el JWT
+![Iniciar sesion y muestra el JWT](image2.png)
+
+

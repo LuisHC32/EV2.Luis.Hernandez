@@ -7,7 +7,7 @@ async function main() {
     body: JSON.stringify({
       nombre: "Ana Perez",
       correo: "ana@example.com",
-      clave: "secreto123",
+      clave: "Secreto123",
     }),
   });
   const registerBody = await registerRes.json();
@@ -18,7 +18,7 @@ async function main() {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       correo: "ana@example.com",
-      clave: "secreto123",
+      clave: "Secreto123",
     }),
   });
   const loginBody = await loginRes.json();

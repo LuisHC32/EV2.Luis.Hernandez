@@ -9,7 +9,7 @@ export default function LoginPage() {
           Inicio de sesión
         </h1>
         <p className="text-sm text-zinc-600">
-          Ingresa correo y clave para obtener un JWT.
+          Ingresa correo y clave para iniciar sesión.
         </p>
       </div>
 

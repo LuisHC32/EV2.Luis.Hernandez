@@ -1,9 +1,16 @@
 import { z } from "zod";
 
+const strongPasswordSchema = z
+  .string()
+  .min(8, "La clave debe tener al menos 8 caracteres")
+  .regex(/[A-Z]/, "La clave debe incluir al menos una mayúscula")
+  .regex(/[a-z]/, "La clave debe incluir al menos una minúscula")
+  .regex(/[0-9]/, "La clave debe incluir al menos un número");
+
 export const registerSchema = z.object({
   nombre: z.string().trim().min(2, "El nombre es obligatorio"),
   correo: z.email("El correo no es válido").trim().toLowerCase(),
-  clave: z.string().min(6, "La clave debe tener al menos 6 caracteres"),
+  clave: strongPasswordSchema,
 });
 
 export const loginSchema = z.object({

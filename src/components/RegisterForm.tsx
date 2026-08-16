@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { AuthMessage } from "@/components/AuthMessage";
+import { registerSchema } from "@/lib/validators";
 
 type RegisterResponse = {
   message?: string;
@@ -28,6 +29,16 @@ export function RegisterForm() {
     setLoading(true);
     setMessage("");
     setMessageType(null);
+
+    const validation = registerSchema.safeParse({ nombre, correo, clave });
+    if (!validation.success) {
+      setMessageType("error");
+      setMessage(
+        validation.error.issues.map((issue) => issue.message).join("; "),
+      );
+      setLoading(false);
+      return;
+    }
 
     try {
       const response = await fetch("/api/auth/register", {
@@ -91,11 +102,15 @@ export function RegisterForm() {
           type="password"
           name="clave"
           required
+          minLength={8}
           autoComplete="new-password"
           value={clave}
           onChange={(e) => setClave(e.target.value)}
           className="rounded-md border border-zinc-300 px-3 py-2 outline-none focus:border-zinc-700"
         />
+        <span className="text-xs text-zinc-500">
+          Mínimo 8 caracteres, con mayúscula, minúscula y número.
+        </span>
       </label>
 
       <button

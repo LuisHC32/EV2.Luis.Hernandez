@@ -22,14 +22,12 @@ export function LoginForm() {
     null,
   );
   const [message, setMessage] = useState("");
-  const [token, setToken] = useState<string | null>(null);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setLoading(true);
     setMessage("");
     setMessageType(null);
-    setToken(null);
 
     try {
       const response = await fetch("/api/auth/login", {
@@ -48,7 +46,6 @@ export function LoginForm() {
 
       setMessageType("success");
       setMessage(data.message ?? "Inicio de sesión correcto");
-      setToken(data.token ?? null);
 
       if (data.token) {
         window.localStorage.setItem("auth_token", data.token);
@@ -98,12 +95,6 @@ export function LoginForm() {
       </button>
 
       <AuthMessage type={messageType} text={message} />
-
-      {token ? (
-        <p className="break-all rounded-md border border-zinc-200 bg-zinc-50 p-3 text-xs text-zinc-700">
-          JWT: {token}
-        </p>
-      ) : null}
     </form>
   );
 }
